@@ -17,7 +17,7 @@ app.post("/api/friends", function(req, res){
     var count = 0;
     var currentName = '';
     var currentPhoto = '';
-    
+
     for(var i = 0; i < friends.length; i++) {
         console.log(friendList[i]);
         for(var k = 0; k < usersScores.length; i++) {
