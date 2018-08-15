@@ -214,7 +214,7 @@
                         </div>
                         <div class="modal-body">
                             <p id="bestMatch"></p>
-                            <img id="imageMatch" url="https://unsplash.com/photos/mEZ3PoFGs_k">
+                          <img id="imageMatch" url="https://unsplash.com/photos/mEZ3PoFGs_k">
                         </div>
 
 
@@ -249,7 +249,7 @@
                     });
                     return isValid;
                 }
-                if (validateForm() == true) {
+                // if (validateForm() == true) {
                                 var friendList = {
                                     name: $("#name").val().trim(),
                                     photo: $("#image").val().trim(),
@@ -266,18 +266,15 @@
                                         $("#q10").val()
                                     ]
                                 };
-                            
-                                $.get("/api/friends", friendList, function(data){
 
-                                        for(var i = 0; i < data.length; i++) {
-                                            $("#bestMatch").text(data[i].name);
-                                            $("#imageMatch").attr("src", data[i].currentPhoto);
-                                        }
-                                      
-                                        $(".modal").modal("toggle");
+                                $.post("/api/friends", friendList, function(data){
+                                    console.log(data);
+                                    $("#bestMatch").text(data.currentName);
+                                    $("#imageMatch").attr("src", data.currentPhoto);
+                                    $(".modal").modal("toggle");
+
 
                                     });
-                                }
                             });
                  
                         });
